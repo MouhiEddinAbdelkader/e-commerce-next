@@ -4,7 +4,7 @@ import React from 'react'
 
 const SetQuantity : React.FC<setQtyProps> = ({cartCounter,
      cartProduct, handleQtyIncrease,
-     handleQtyDeacrease}) => {
+     handleQtyDecrease}) => {
         const btnStyle = 'border-[1.2px] border-slate-300 rounded px-2'
   return (
     <div className='flex gap-8 
@@ -17,7 +17,7 @@ const SetQuantity : React.FC<setQtyProps> = ({cartCounter,
     <div className='flex items-center
     gap-4'>
         <button className={btnStyle}
-        onClick={handleQtyDeacrease}
+        onClick={handleQtyDecrease}
         >-</button>
         <div>{cartProduct.quantity}</div>
         <button className={btnStyle}

@@ -1,5 +1,7 @@
 'use client';
 import Cart from '@/app/cart/page';
+import Button from '@/app/componants/Button';
+import ProductImage from '@/app/componants/products/ProductImages';
 import SetColor from '@/app/componants/products/SetColor';
 import SetQuantity from '@/app/componants/products/setQuantity';
 import { productDetailsProps } from '@/types/type'
@@ -45,28 +47,29 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
     })
   }, [cartDetails.selectedImg])
 
+  const handleQtyIncrease = useCallback(() => {
+    
+    SetCartDetails((prev) => {
+      return {...prev, quantity: ++prev.quantity};
+    });
+  }, [cartDetails]);
 
-  const handleQtyDeacrease = useCallback(() => {
+  const handleQtyDecrease = useCallback(() => {
     SetCartDetails((prev) => {
       return {...prev, quantity: --prev.quantity};
     });
   }, [cartDetails]);
   
-  const handleQtyIncrease = useCallback(() => {
-  if (cartDetails.quantity === 1) {
-    return;
-  }
-  SetCartDetails((prev) => {
-    return {...prev, quantity: ++prev.quantity};
-  });
-}, [cartDetails]);
+  
 
  
 
   return (
     <div className='grid grid-cols-1 
     md:grid-cols-2 gap-12 '>
-      <div>image</div>
+      <ProductImage cartProduct={cartDetails}
+       product={product} 
+       handleColorSelect={handColorSelect} />
       <div className='flex flex-col gap-1
       text-slate-500 font-medium'>
 
@@ -107,10 +110,15 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
          <SetQuantity 
          cartProduct={cartDetails}
          handleQtyIncrease={handleQtyIncrease}
-         handleQtyDeacrease={handleQtyDeacrease}
+         handleQtyDecrease={handleQtyDecrease}
          />
          <Horizontal />
-         <div>Add To Cart</div>
+         <div className='max-w-[300px]'>
+          <Button  
+          label='Add To Cart'
+          onclick={() => {}}
+          />
+         </div>
       </div>
     </div>
   )

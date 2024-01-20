@@ -1,4 +1,5 @@
 import { CartProductType, SelectedImgType } from "@/app/product/[productid]/productDetails";
+import { IconType } from "react-icons";
 
 export interface productCardProps {
     data : any;
@@ -21,6 +22,23 @@ export interface setQtyProps {
     cartCounter? : boolean,
     cartProduct : CartProductType,
     handleQtyIncrease : () => void,
-    handleQtyDeacrease : () => void,
+    handleQtyDecrease : () => void,
 
+}
+
+export interface buttonProps {
+    label: string,
+    disabled?: boolean,
+    outline?: boolean,
+    small?: boolean, 
+    custom?:string,
+    icon?: IconType,
+    onclick : (e: React.MouseEvent<HTMLButtonElement>)
+     => void
+}
+
+export interface   ProductImageProps {
+    cartProduct: CartProductType;
+    product: any;
+    handleColorSelect : (value : SelectedImgType) => void;
 }
