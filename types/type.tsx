@@ -1,4 +1,5 @@
 import { CartProductType, SelectedImgType } from "@/app/product/[productid]/productDetails";
+import {  UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 import { IconType } from "react-icons";
 
 export interface productCardProps {
@@ -41,4 +42,14 @@ export interface   ProductImageProps {
     cartProduct: CartProductType;
     product: any;
     handleColorSelect : (value : SelectedImgType) => void;
+}
+
+export interface InputProps {
+    id:string;
+    label: string;
+    type?:string;
+    disabled?:boolean;
+    required? : boolean;
+    register : UseFormRegister<FieldValues>;
+    errors : FieldErrors; 
 }

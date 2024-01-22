@@ -14,7 +14,7 @@ const SetColor: React.FC<setColorProps> = ({images,
       <div className='flex gap-1'>
       {images.map((image) => {
         return (
-          <div 
+          <div key={image.color}
            onClick={() => handColorSelect(image)} 
           className={`h-7 w-7 
           border-teal-300 rouded-full

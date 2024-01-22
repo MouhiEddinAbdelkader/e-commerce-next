@@ -1,9 +1,9 @@
 'use client';
-import Cart from '@/app/cart/page';
 import Button from '@/app/componants/Button';
 import ProductImage from '@/app/componants/products/ProductImages';
 import SetColor from '@/app/componants/products/SetColor';
 import SetQuantity from '@/app/componants/products/setQuantity';
+import { UseCart, useCart } from '@/hooks/useCart';
 import { productDetailsProps } from '@/types/type'
 import { Rating } from '@mui/material';
 import React, { useCallback, useState } from 'react'
@@ -30,6 +30,7 @@ export type SelectedImgType = {
 }
 
 const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
+  const {cartTotalQty} = useCart();
   const [cartDetails, SetCartDetails] =
    useState<CartProductType>({
     id: product.id,
@@ -41,6 +42,8 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
     quantity: 1,
     price: product.price
   })
+  console.log(cartTotalQty);
+  
   const handColorSelect  = useCallback((value : SelectedImgType) => {
     SetCartDetails((prev) => {
       return {...prev, selectedImg : value}
