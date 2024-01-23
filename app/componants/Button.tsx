@@ -1,15 +1,24 @@
 'use client';
-import { buttonProps } from '@/types/type';
 import React from 'react'
+import { IconType } from 'react-icons';
 
+ interface buttonProps {
+  label: string,
+  disabled?: boolean,
+  outline?: boolean,
+  small?: boolean, 
+  custom?:string,
+  icon?: IconType,
+  onClick : (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
 const Button: React.FC<buttonProps> = ({
   label,
   disabled,
   outline,
   small, 
   custom,
+  onClick,
   icon : Icon,
-  onclick
 }) => {
   return (
     <button
@@ -27,10 +36,12 @@ const Button: React.FC<buttonProps> = ({
    ${small ? 'text-sm font-light' 
    : 'text-md font-semibold'}
    ${small ? "py-1 px-2 border-[1px] "
-  : "bx-3 by-4 border-2"}
+  : "px-3 py-4 border-2"}
    ${custom ? custom : ''}
 
-    `} >
+    `}
+    onClick={onClick}
+    >
       {Icon &&  <Icon size={24} />}
           {label}
     </button>

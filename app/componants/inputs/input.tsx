@@ -29,10 +29,11 @@ const Input : React.FC<InputProps> = ({
         bg-white
         font-light
         border-2
-        rounded:md
+        rounded-md
         transition
         disabled:opacity-70
-        disabled:cursor-not-allowd
+        
+        disabled:cursor-not-allowed
          ${errors[id] ? 'border-rose-400' 
          : 'border-slate-300'}
          ${errors[id] ? 'focus:border-rose-400':
@@ -55,7 +56,6 @@ const Input : React.FC<InputProps> = ({
         peer-focus:-translate-y-4 
         ${errors[id] ? 'text-rose-500' 
         : 'text-slate-300'}
-      
         `}
 
         > {label}</label>

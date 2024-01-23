@@ -1,6 +1,5 @@
 import { CartProductType, SelectedImgType } from "@/app/product/[productid]/productDetails";
 import {  UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
-import { IconType } from "react-icons";
 
 export interface productCardProps {
     data : any;
@@ -27,16 +26,7 @@ export interface setQtyProps {
 
 }
 
-export interface buttonProps {
-    label: string,
-    disabled?: boolean,
-    outline?: boolean,
-    small?: boolean, 
-    custom?:string,
-    icon?: IconType,
-    onclick : (e: React.MouseEvent<HTMLButtonElement>)
-     => void
-}
+
 
 export interface   ProductImageProps {
     cartProduct: CartProductType;

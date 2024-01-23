@@ -3,7 +3,7 @@ import Button from '@/app/componants/Button';
 import ProductImage from '@/app/componants/products/ProductImages';
 import SetColor from '@/app/componants/products/SetColor';
 import SetQuantity from '@/app/componants/products/setQuantity';
-import { UseCart, useCart } from '@/hooks/useCart';
+import {  useCart } from '@/hooks/useCart';
 import { productDetailsProps } from '@/types/type'
 import { Rating } from '@mui/material';
 import React, { useCallback, useState } from 'react'
@@ -119,7 +119,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
          <div className='max-w-[300px]'>
           <Button  
           label='Add To Cart'
-          onclick={() => {}}
+          onClick={() => {}}
           />
          </div>
       </div>
