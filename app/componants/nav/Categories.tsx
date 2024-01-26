@@ -1,6 +1,9 @@
+'use client';
 import React from 'react'
 import Container from '../Container'
-import { CategoriesList } from '@/utils/Categories'
+import { CategoriesList } from '@/utils/categories'
+import Category from './Category'
+import { MdDns } from 'react-icons/md'
 
 const Categories = () => {
   return (
@@ -8,14 +11,17 @@ const Categories = () => {
       <Container>
         <div className=' pt-4 flex flex-row
          items-center 
-         justify-center
+         justify-between
          overflow-x-auto
         '>
           {
             CategoriesList.map((item) => (
-              <div>
-                
-              </div>
+              <Category 
+              key={item.id}
+              label={item.category}
+              icon={MdDns}
+
+              />
             ))
           }        
         </div>

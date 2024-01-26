@@ -3,10 +3,10 @@ import Button from '@/app/componants/Button';
 import ProductImage from '@/app/componants/products/ProductImages';
 import SetColor from '@/app/componants/products/SetColor';
 import SetQuantity from '@/app/componants/products/setQuantity';
-import {  useCart } from '@/hooks/useCart';
+import { useCart } from '@/hooks/useCart';
 import { productDetailsProps } from '@/types/type'
 import { Rating } from '@mui/material';
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 const Horizontal = () => {
   return <h2 className='w-[30%] my-2' />
@@ -30,7 +30,8 @@ export type SelectedImgType = {
 }
 
 const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
-  const {cartTotalQty} = useCart();
+const {handleAddProductToCart, cartProducts} = useCart()
+const [isProductInCart , setIsProductInCart] = useState(false)
   const [cartDetails, SetCartDetails] =
    useState<CartProductType>({
     id: product.id,
@@ -42,8 +43,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
     quantity: 1,
     price: product.price
   })
-  console.log(cartTotalQty);
-  
+  console.log(cartProducts)
   const handColorSelect  = useCallback((value : SelectedImgType) => {
     SetCartDetails((prev) => {
       return {...prev, selectedImg : value}
@@ -63,8 +63,16 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
     });
   }, [cartDetails]);
   
-  
+  useEffect(() => {
+    setIsProductInCart(false)
+    if(cartProducts){
+      const existingIndex = cartProducts.findIndex((item) => item.id === product.id)
 
+      if(existingIndex < -1) {
+        setIsProductInCart(true)
+      }
+    }
+  }, [cartProducts])
  
 
   return (
@@ -106,7 +114,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
          <Horizontal />
         <SetColor
          images={product.images} 
-         cartproduct={cartDetails}
+         cartProduct={cartDetails}
          handColorSelect={handColorSelect}
          />
          <Horizontal />
@@ -119,7 +127,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({product}) => {
          <div className='max-w-[300px]'>
           <Button  
           label='Add To Cart'
-          onClick={() => {}}
+          onClick={() => handleAddProductToCart(cartDetails)}
           />
          </div>
       </div>

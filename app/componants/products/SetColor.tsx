@@ -5,7 +5,7 @@ import React from 'react'
 
 
 const SetColor: React.FC<setColorProps> = ({images,
-   cartproduct,
+   cartProduct,
    handColorSelect } ) => {
   return (
     <div className='flex gap-4 items-center'>
@@ -17,10 +17,10 @@ const SetColor: React.FC<setColorProps> = ({images,
           <div key={image.color}
            onClick={() => handColorSelect(image)} 
           className={`h-7 w-7 
-          border-teal-300 rouded-full
+          border-teal-300 rounded-full
           flex items-center
           justify-center
-          ${cartproduct.selectedImg.color === 
+          ${cartProduct.selectedImg.color === 
           image.color
           ? 'border-[1.5px]'
         : "border-none" }`}>

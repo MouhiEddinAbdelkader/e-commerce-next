@@ -1,5 +1,6 @@
+'use client'
 import { useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useCallback } from 'react'
 import { IconType } from 'react-icons'
 interface CategoryProps {

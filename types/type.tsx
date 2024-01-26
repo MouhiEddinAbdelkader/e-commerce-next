@@ -11,19 +11,16 @@ export interface IPrams {
 export interface productDetailsProps {
     product: any;
 }
-
 export interface setColorProps {
     images : SelectedImgType,
-    cartproduct: CartProductType,
+    cartProduct: CartProductType,
     handColorSelect : (value : SelectedImgType ) => void,
 }
-
 export interface setQtyProps {
     cartCounter? : boolean,
     cartProduct : CartProductType,
     handleQtyIncrease : () => void,
     handleQtyDecrease : () => void,
-
 }
 
 
