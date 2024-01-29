@@ -1,5 +1,5 @@
 'use client'
-import { SelectedImgType } from '@/app/product/[productid]/productDetails'
+import { SelectedImgType } from '@/app/product/[productId]/productDetails'
 import { ProductImageProps } from '@/types/type'
 import Image from 'next/image'
 import React from 'react'

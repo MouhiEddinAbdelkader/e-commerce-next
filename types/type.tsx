@@ -1,4 +1,4 @@
-import { CartProductType, SelectedImgType } from "@/app/product/[productid]/productDetails";
+import { CartProductType, SelectedImgType } from "@/app/product/[productId]/productDetails";
 import {  UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 
 export interface productCardProps {
