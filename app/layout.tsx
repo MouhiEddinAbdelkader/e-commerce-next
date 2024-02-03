@@ -13,11 +13,12 @@ export const metadata: Metadata = {
   description: 'the best of the best',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
       <body className={`${poppins.className} text-slate-700`}>

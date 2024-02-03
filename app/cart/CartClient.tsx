@@ -5,10 +5,12 @@ import React from 'react'
 import { MdArrowBack } from 'react-icons/md'
 import Button from '../componants/Button'
 import ItemContent from './ItemContent'
+import { formatPrice } from '@/utils/formatPrice'
 
 const CartClient = () => {
     const {cartProducts, 
-      handleClearCart} = useCart()
+      handleClearCart,
+      cartTotalAmount} = useCart()
     // if(!cartProducts || cartProducts.length === 0) {
     //   return (
     //     <div className='flex flex-col  items-center' >
@@ -60,7 +62,7 @@ const CartClient = () => {
              w-full text-base 
              font-semibold'>
             <span>Subtotal</span>
-            <span>Subtotal</span>
+            <span>{formatPrice(cartTotalAmount)}</span>
             </div>
             <p 
             className='text-slate-500'

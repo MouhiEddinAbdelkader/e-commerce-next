@@ -25,6 +25,7 @@ export const authOptions: AuthOptions = {
         },
       },
       async authorize(credentials) {
+        // 
         if(!credentials?.email || !credentials.password) {
           throw new Error('invalid email or password');
         }
@@ -33,6 +34,7 @@ export const authOptions: AuthOptions = {
             email: credentials.email
           }
         })
+        
         if(!user || !user?.hashedPasword) {
           throw new Error("invalid email or password");
         }

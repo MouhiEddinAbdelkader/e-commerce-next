@@ -6,8 +6,14 @@ import { RxAvatar } from 'react-icons/rx';
 import MenuItem from './MenuItem';
 import { signOut } from 'next-auth/react';
 import BackDrop from './BackDrop';
+import { SafeUser } from '@/types';
 
-const UserMenu = () => {
+
+interface UserMenuProps {
+    currentUser : SafeUser | null;
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
     const [isOpen, setIsOpen] = useState(false)
     const toggleOpen = useCallback(() => {
         setIsOpen((prev) => !prev)
@@ -45,36 +51,41 @@ const UserMenu = () => {
             cursor-pointer
 
             '>
-                <div>
-                    <Link href="/orders">
-                        <MenuItem onClick={toggleOpen}>
-                            your Orders
-                        </MenuItem>
-                    </Link>
-                    <Link href="/admin">
-                        <MenuItem onClick={toggleOpen}>
-                            Admin
-                        </MenuItem>
-                    </Link>
-                    <MenuItem onClick={() => {
-                        toggleOpen;
-                        signOut();
-                    }}>
-                            Log Out
-                        </MenuItem>
-                </div>
-                <div>
-                    <Link href="/login">
-                        <MenuItem onClick={toggleOpen}>
-                            Log In
-                        </MenuItem>
-                    </Link>
-                    <Link href="/register">
-                        <MenuItem onClick={toggleOpen}>
-                            Register
-                        </MenuItem>
-                    </Link>
-                </div>
+                {currentUser 
+                ? <div>
+                <Link href="/orders">
+                    <MenuItem onClick={toggleOpen}>
+                        your Orders
+                    </MenuItem>
+                </Link>
+                <Link href="/admin">
+                    <MenuItem onClick={toggleOpen}>
+                        Admin
+                    </MenuItem>
+                </Link>
+                <MenuItem onClick={() => {
+                    toggleOpen;
+                    signOut();
+                }}>
+                        Log Out
+                    </MenuItem>
+            </div>
+
+            :  <div>
+            <Link href="/login">
+                <MenuItem onClick={toggleOpen}>
+                    Log In
+                </MenuItem>
+            </Link>
+            <Link href="/register">
+                <MenuItem onClick={toggleOpen}>
+                    Register
+                </MenuItem>
+            </Link>
+        </div>
+            }
+                
+               
             </div>
         )}
     </div>
